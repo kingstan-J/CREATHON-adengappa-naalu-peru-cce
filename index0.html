@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Description</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #1d3c6a;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        header nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        header nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #1d3c6a;
+        }
+
+        .team {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .team img {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
+
+        .image-gallery {
+            display: flex;
+            gap: 10px;
+        }
+
+        .image-gallery img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #1d3c6a;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+<button type="Submit"><a href="index1.html">Next</button>
+    <header>
+        <h1>Welcome to IPL (Indian Premier League)</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About IPL</a></li>
+                <li><a href="#teams">Teams</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About IPL</h2>
+        <p>The Indian Premier League (IPL) is a professional Twenty20 cricket league in India, officially known as the Vivo IPL due to sponsorship reasons. It was founded by the Board of Control for Cricket in India (BCCI) in 2008. IPL features franchises representing various cities and regions across India. 
+		The league has grown in popularity worldwide and features some of the best cricket players from around the globe.</p><br><br>
+		<p>
+        The following are the members of the IPL GC:<br>
+
+        1. Mr. Arun Singh Dhumal, Chairman<br>
+        2. Mr. Jay Shah, Honorary Secretary, BCCI, Member<br>
+        3. Mr. Ashish Shelar, Honorary Treasurer, BCCI, Member<br>
+        4. Mr. Avishek Dalmiya, Member<br>
+        5. Mr. Vankina Chamundeswara Nath, Member (ICA representative)<br>
+        6. Mr. CM Sane, CAG Nominee, Member</p><br><br>
+		<img src="https://i.pinimg.com/originals/26/8b/e0/268be02061a78cdf9ae1b83fdeb0ae44.jpg">
+		<br><br>
+		<p>In 2014, it ranked sixth in average attendance among all sports leagues.[6] <br>In 2010, the IPL became the first sporting event to be broadcast live on YouTube.<br>[7][8] Inspired by the success of the IPL, other Indian sports leagues have been established.[a][11][12][13] In 2022, the league's brand value was estimated at ₹90,038 crore (US$11 billion).[14] According to the BCCI, the 2015 IPL season contributed ₹1,150 crore (US$140 million) to India's GDP.[15] <br>In December 2022, the IPL achieved a valuation of US$10.9 billion, <br>becoming a decacorn and registering a 75% growth in dollar terms since 2020 <br>when it was valued at $6.2 billion, according to a report by the consulting firm D and P Advisory.<br>[16] Its 2023 final became the most streamed live event on the internet, with 32 million viewers.[17]
+		
+    </section>
+
+    <section id="teams">
+        <h2>Teams</h2>
+        <div class="team">
+            <img src="https://wallpapercave.com/wp/wp8770181.jpg" alt="Mumbai Indians" />
+            <p><strong>Mumbai Indians</strong> - One of the most successful teams in IPL history.</p>
+        </div>
+        <div class="team">
+            <img src="https://www.oneindia.com/ph-big/2023/05/chennai-super-kings-players-celebrate-with-trophy-after-winning-ipl-2023_168542511520.jpg" alt="Chennai Super Kings" />
+            <p><strong>Chennai Super Kings</strong> - Known for their consistent performance over the years.</p>
+        </div>
+        <div class="team">
+            <img src="https://www.sportzcraazy.com/wp-content/uploads/2020/02/RCB-2017.jpg" alt="Royal Challengers Bangalore" />
+            <p><strong>Royal Challengers Bangalore</strong> - Known for their star-studded lineup.</p>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>IPL Gallery</h2>
+        <div class="image-gallery">
+            <img src="https://hindi.dekhnews.com/wp-content/uploads/2020/10/Chennai-CSK-vs-Mumbai-MI-in-IPL-Today-Match-Details-in-Hindi.png" alt="IPL Match 1" /><br>
+            <img src="https://img.jagranjosh.com/images/2024/March/2932024/KKR-vs-RCB-HtH.jpg" alt="IPL Match 2" /><br>
+            <img src="https://tse1.mm.bing.net/th?id=OIP.QehazQipmKRcKxDnrneo8QAAAA&pid=Api&P=0&h=180" alt="IPL Match 3" />
+        </div>
+    </section>
+
+    <footer>
+        <p>Created with love for IPL fans. &copy; 2024</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Example of adding an interactive feature: changing text color on hover
+            const teams = document.querySelectorAll('.team p');
+            teams.forEach(team => {
+                team.addEventListener('mouseover', () => {
+                    team.style.color = '#ff5733'; // Change text color when hovered
+                });
+                team.addEventListener('mouseout', () => {
+                    team.style.color = '#000'; // Reset color when hover ends
+                });
+            });
+        });
+    </script>
+	
+	
+</body>
+</html>

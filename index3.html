@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL 2024 Playoff Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #2e8b57;
+            font-size: 36px;
+        }
+
+        .table-container {
+            width: 100%;
+            background-image:url('https://technosports.co.in/wp-content/uploads/2023/03/IPL-jersey.jpg');
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #2e8b57;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .points, .nrr {
+            text-align: center;
+        }
+
+        .filter {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        select {
+            padding: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>IPL 2024 Playoff Table</h1>
+    </header>
+
+    <div class="table-container">
+        <div class="filter">
+            <label for="sortBy">Sort by: </label>
+            <select id="sortBy">
+                <option value="points">Points</option>
+                <option value="nrr">Net Run Rate</option>
+            </select>
+        </div>
+
+        <table id="ipl-table">
+            <thead>
+                <tr>
+                    <th>Team</th>
+                    <th>Matches</th>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th class="points">Points</th>
+                    <th class="nrr">Net Run Rate (NRR)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will be inserted dynamically here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // IPL Playoff Table Data
+        const teams = [
+            { name: "Mumbai Indians", matches: 14, wins: 8, losses: 6, points: 16, nrr: 0.421 },
+            { name: "Chennai Super Kings", matches: 14, wins: 9, losses: 5, points: 18, nrr: 0.134 },
+            { name: "Delhi Capitals", matches: 14, wins: 6, losses: 8, points: 12, nrr: -0.101 },
+            { name: "Kolkata Knight Riders", matches: 14, wins: 7, losses: 7, points: 14, nrr: 0.092 },
+            { name: "Royal Challengers Bangalore", matches: 14, wins: 9, losses: 5, points: 18, nrr: 0.122 },
+            { name: "Rajasthan Royals", matches: 14, wins: 8, losses: 6, points: 16, nrr: 0.270 },
+            { name: "Punjab Kings", matches: 14, wins: 6, losses: 8, points: 12, nrr: -0.050 },
+            { name: "Sunrisers Hyderabad", matches: 14, wins: 4, losses: 10, points: 8, nrr: -0.264 },
+            { name: "Lucknow Super Giants", matches: 14, wins: 10, losses: 4, points: 20, nrr: 0.250 },
+            { name: "Gujarat Titans", matches: 14, wins: 11, losses: 3, points: 22, nrr: 0.350 }
+        ];
+
+        // Function to render the table
+        function renderTable(teamsData) {
+            const tableBody = document.querySelector("#ipl-table tbody");
+            tableBody.innerHTML = ""; // Clear the table before rendering new data
+
+            teamsData.forEach(team => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${team.name}</td>
+                    <td>${team.matches}</td>
+                    <td>${team.wins}</td>
+                    <td>${team.losses}</td>
+                    <td class="points">${team.points}</td>
+                    <td class="nrr">${team.nrr.toFixed(3)}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Function to sort the table based on Points or NRR
+        function sortTable(criteria) {
+            let sortedTeams = [...teams];
+            if (criteria === "points") {
+                sortedTeams.sort((a, b) => b.points - a.points);
+            } else if (criteria === "nrr") {
+                sortedTeams.sort((a, b) => b.nrr - a.nrr);
+            }
+            renderTable(sortedTeams);
+        }
+
+        // Event listener for sorting
+        document.getElementById("sortBy").addEventListener("change", (event) => {
+            sortTable(event.target.value);
+        });
+
+        // Initial render of the table
+        renderTable(teams);
+    </script>
+<button type="Submit"><a href="index4.html">Next</button> 	
+
+</body>
+</html>

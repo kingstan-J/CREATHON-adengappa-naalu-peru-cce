@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Fixtures with Team Logos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #2e8b57;
+            font-size: 36px;
+        }
+
+        .filter {
+            margin: 20px;
+        }
+
+        select {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #2e8b57;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .team-logo {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body background="https://wallpapercave.com/wp/wp7486102.jpg" height="250px" width="250px">
+    <audio controls>
+    <source src="C:\Users\Kingstan\Desktop\IPL\IPL-Action\ipl_trumpet.mp3" type="audio/mpeg">
+     </audio>
+    <header>
+        <h1>IPL 2024 Fixtures</h1>
+        <div class="filter">
+            <label for="team">Filter by Team: </label>
+            <select id="team">
+                <option value="All">All</option>
+                <option value="Mumbai Indians">Mumbai Indians</option>
+                <option value="Chennai Super Kings">Chennai Super Kings</option>
+                <option value="Delhi Capitals">Delhi Capitals</option>
+                <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+                <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                <option value="Rajasthan Royals">Rajasthan Royals</option>
+                <option value="Punjab Kings">Punjab Kings</option>
+                <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+                <option value="Lucknow Super Giants">Lucknow Super Giants</option>
+                <option value="Gujarat Titans">Gujarat Titans</option>
+            </select>
+        </div>
+    </header>
+
+    <table id="fixtures">
+        <thead>
+            <tr>
+                <th>Match</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Venue</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Fixtures will be dynamically inserted here -->
+        </tbody>
+    </table>
+
+    <script>
+        // IPL Fixtures Data with Team Logos
+        const fixtures = [
+            { match: "Mumbai Indians vs Chennai Super Kings", date: "2024-03-29", time: "7:30 PM", venue: "Wankhede Stadium", team1: "Mumbai Indians", team2: "Chennai Super Kings", logo1: "https://tse1.mm.bing.net/th?id=OIP.I4J2tbscJwV5UC5OwNxzmgHaEZ&pid=Api&P=0&h=180", logo2: "https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/Chennai_Super_Kings_Logo.svg/1241px-Chennai_Super_Kings_Logo.svg.png" },
+            { match: "Delhi Capitals vs Royal Challengers Bangalore", date: "2024-03-30", time: "3:30 PM", venue: "Arun Jaitley Stadium", team1: "Delhi Capitals", team2: "Royal Challengers Bangalore", logo1: "https://tse1.mm.bing.net/th?id=OIP.EF5uSd-ZCZjWzvYqPXQB5AHaHa&pid=Api&P=0&h=180", logo2: "https://wallpaperaccess.com/full/7448672.jpg" },
+            { match: "Kolkata Knight Riders vs Rajasthan Royals", date: "2024-03-31", time: "7:30 PM", venue: "Eden Gardens", team1: "Kolkata Knight Riders", team2: "Rajasthan Royals", logo1: "https://wallpapercave.com/wp/wp7538750.jpg", logo2: "https://img.jagranjosh.com/imported/images/E/GK/Rajasthan%20Royals%20Team%20profile.jpg" },
+            { match: "Punjab Kings vs Sunrisers Hyderabad", date: "2024-04-01", time: "3:30 PM", venue: "PCA Stadium", team1: "Punjab Kings", team2: "Sunrisers Hyderabad", logo1: "https://e0.pxfuel.com/wallpapers/913/737/desktop-wallpaper-ipl-6-kings-11-punjab-vs-mumbai-indians-background-mumbai-indians-logo.jpg", logo2: "https://tse4.mm.bing.net/th?id=OIP.2zLGs_goQ5MOrPyGWP0gZQHaEo&pid=Api&P=0&h=180" },
+            { match: "Lucknow Super Giants vs Gujarat Titans", date: "2024-04-02", time: "7:30 PM", venue: "BRSABV Ekana Stadium", team1: "Lucknow Super Giants", team2: "Gujarat Titans", logo1: "https://english.cdn.zeenews.com/sites/default/files/2022/02/12/1013876-lsg-logo.jpg", logo2: "https://imgk.timesnownews.com/media/Gujarat_Titans_logo.png" }
+        ];
+
+        // Function to render fixtures
+        function renderFixtures(filteredTeam = 'All') {
+            const tableBody = document.querySelector('#fixtures tbody');
+            tableBody.innerHTML = '';
+
+            const filteredFixtures = filteredTeam === 'All' ? fixtures : fixtures.filter(fixture => 
+                fixture.team1 === filteredTeam || fixture.team2 === filteredTeam
+            );
+
+            filteredFixtures.forEach(fixture => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <div class="team-logo">
+                            <img src="${fixture.logo1}" alt="${fixture.team1} Logo">
+                            <span>${fixture.team1}</span> vs 
+                            <img src="${fixture.logo2}" alt="${fixture.team2} Logo">
+                            <span>${fixture.team2}</span>
+                        </div>
+                    </td>
+                    <td>${fixture.date}</td>
+                    <td>${fixture.time}</td>
+                    <td>${fixture.venue}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Event listener for team filter
+        document.getElementById('team').addEventListener('change', (event) => {
+            renderFixtures(event.target.value);
+        });
+
+        // Initial render
+        renderFixtures();
+    </script>
+<button type="Submit"><a href="index3.html">Next</button> 
+</body>
+</html>
